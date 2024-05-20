@@ -17,7 +17,7 @@ def req2():
     res = requests.request(method=request.method, url=BASE_2 + request.args['path'],
         headers={k: v for k, v in request.headers if k.lower() != 'host'},
         data=request.get_data(), cookies=request.cookies, allow_redirects=False)
-    excluded_headers = ['content-encoding', 'content-length', 'transfer-encoding', 'connection']
+    excluded_headers = ['connection']
     headers = [(k, v) for k, v in res.raw.headers.items() if k.lower() not in excluded_headers]
     response = Response(res.content, res.status_code, headers)
     return response
