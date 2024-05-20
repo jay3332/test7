@@ -14,7 +14,7 @@ def req():
     return response
 @app.route('/req2', methods=['GET', 'OPTIONS', 'POST', 'PUT', 'PATCH', 'DELETE'])
 def req2():
-    res = requests.request(method=request.method, url=BASE2 + request.args['path'],
+    res = requests.request(method=request.method, url=BASE_2 + request.args['path'],
         headers={k: v for k, v in request.headers if k.lower() != 'host'},
         data=request.get_data(), cookies=request.cookies, allow_redirects=False)
     excluded_headers = ['content-encoding', 'content-length', 'transfer-encoding', 'connection']
