@@ -12,7 +12,7 @@ def req():
     headers = [(k, v) for k, v in res.raw.headers.items() if k.lower() not in excluded_headers]
     response = Response(res.content, res.status_code, headers)
     return response
-@app.route('/req2', methods=['GET', 'OPTIONS', 'POST'])
+@app.route('/req2', methods=['GET', 'OPTIONS', 'POST', 'PUT', 'PATCH', 'DELETE'])
 def req2():
     res = requests.request(method=request.method, url=BASE2 + request.args['path'],
         headers={k: v for k, v in request.headers if k.lower() != 'host'},
